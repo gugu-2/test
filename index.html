@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Dark Mermaid Flow</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.0/dist/mermaid.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/panzoom@9.4.0/dist/panzoom.min.js"></script>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #6349d8; /* deep purple-black */
+        color: #ffffff;
+        overflow: hidden;
+        font-family: sans-serif;
+      }
+
+      .container {
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+        background-color: #280764;
+      }
+
+      .zoom-wrapper {
+        width: 100%;
+        height: 100%;
+        cursor: grab;
+      }
+
+      .mermaid {
+        padding: 2rem;
+        color: #fff;
+      }
+
+      svg {
+        width: auto;
+        height: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="zoom-wrapper" id="panzoom">
+        <div class="mermaid">
+          graph TD
+          T[24h Before: Send Reminder Email/SMS] --> U[Technician Receives Job Assignment]
+          U --> V[Technician Views Job Details on Mobile]
+          V --> W[Access Customer Information]
+          V --> X[View Property Specifics]
+          V --> Y[Review Installation Requirements]
+          Y --> Z[Technician Completes Installation]
+          Z --> AA[Technician Updates Job Status]
+        </div>
+      </div>
+    </div>
+
+    <script>
+      mermaid.initialize({
+        startOnLoad: true,
+        theme: "dark",
+        themeVariables: {
+          background: "#E87C01",
+          primaryColor: "#8c65ff",
+          primaryTextColor: "#ffffff",
+          nodeTextColor: "#ffffff",
+          lineColor: "#cccccc"
+        }
+      });
+
+      window.addEventListener("load", () => {
+        const element = document.getElementById("panzoom");
+        panzoom(element, {
+          smoothScroll: true,
+          maxZoom: 5,
+          minZoom: 0.5
+        });
+      });
+    </script>
+  </body>
+</html>
